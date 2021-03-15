@@ -20,14 +20,14 @@ print(df)
 create_schema_matches = snowflake_instance.run_sql(
     cursor, f"CREATE SCHEMA IF NOT EXISTS World_Cups_{os.environ.get('ENV', 'DEV')}.Matches;")
 
-table_ddl_statement =''' "Year" INTEGER, "Date" DATE, "Time" TIME, "Stage" VARCHAR(50), "Stadium" VARCHAR(50), "City" VARCHAR(50), "Home_Team_Name" VARCHAR(50), "Home_Team_Goals" INTEGER, "Away_Team_Goals" INTEGER, "Away_Team_Name" VARCHAR(50), "Win_conditions" VARCHAR(50), "Attendance" INTEGER, "Half_time_Home_Goals" INTEGER, "Half_time_Away_Goals" INTEGER, "Referee" VARCHAR(50), "Assistant_1" VARCHAR(50), "Assistant_2" VARCHAR(50), "RoundID" INTEGER, "MatchID" INTEGER, "Home_Team_Initials" VARCHAR(5), "Away_Team_Initials" VARCHAR(5) '''
+table_ddl_statement =''' "surname" VARCHAR, "team" VARCHAR, "position" VARCHAR, "minutes" INT, "shots" INT, "passes" INT, "tackles" INT, "saves" INT '''
 create_table_Games = snowflake_instance.run_sql(
-    cursor, f"CREATE TABLE IF NOT EXISTS World_Cups_{os.environ.get('ENV', 'DEV')}.Matches.games ({table_ddl_statement});")
+    cursor, f"CREATE TABLE IF NOT EXISTS World_Cups_{os.environ.get('ENV', 'DEV')}.Matches.PLAYERS ({table_ddl_statement});")
 data_putter = snowflake_instance.run_sql(
-    cursor, f'PUT file://Data\WorldCupMatches.csv @~ auto_compress=false;')
+    cursor, f'PUT file://WorldCupPlayers.csv @~ auto_compress=false;')
 read = snowflake_instance.run_sql(cursor, f"LIST @~")
 print(read)
 
 data_copier = snowflake_instance.run_sql(
-cursor, f"""COPY INTO World_Cups_{os.environ.get('ENV', 'DEV')}.Matches.games from @~/WorldCupMatches.csv FILE_FORMAT = (TYPE = 'csv' FIELD_OPTIONALLY_ENCLOSED_BY = '"' SKIP_HEADER = 1);""")
+cursor, f"""COPY INTO World_Cups_{os.environ.get('ENV', 'DEV')}.MATCHES.PLAYERS from @~/WorldCupPlayers.csv FILE_FORMAT = (TYPE = 'csv' FIELD_OPTIONALLY_ENCLOSED_BY = '"' SKIP_HEADER = 1);""")
 

@@ -2,6 +2,8 @@ from sqlalchemy import create_engine
 from Snowflake_Connector import Snowflake_Connector
 import os
 import pandas as pd
+from pathlib import Path
+from snowflake.sqlalchemy import URL
 
 snowflake_connection_details = {
     "user": os.environ.get('SNOWFLAKE_USER'),
@@ -12,10 +14,11 @@ snowflake_connection_details = {
 }
 
 engine = create_engine(
-    f'snowflake://{snowflake_connection_details["user"]}:{snowflake_connection_details["password"]}@{snowflake_connection_details["account"]}/WORLD_CUPS_DEV')
+    f'snowflake://{snowflake_connection_details["user"]}:{snowflake_connection_details["password"]}@{snowflake_connection_details["account"]}/WORLD_CUPS_DEV'
+    )
 
-df = pd.read_csv(
-    r"C:\Users\Thomas\OneDrive\Documents\Football_Project_Github\Data\WorldCupPlayers.csv")
+df = pd.read_csv(f"{Path.cwd()}/WorldCupPlayers.csv")
+
 print(df)
 
 df.to_sql('players', engine, if_exists='replace',
