@@ -1,4 +1,4 @@
-# World Cup Data Engineering Project
+# Pav & Tom's Data Engineering Project
 
 In this project we're going to connect the code on our machines with our snowflake database using Python. This will involve writing a program that will act as a mediator between our terminals and snowflake.
 
