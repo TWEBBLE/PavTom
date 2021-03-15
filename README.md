@@ -1,6 +1,6 @@
 # World Cup Data Engineering Project
 
-In this project I'm going to connect the code on my machine with my snowflake database using Python. This will involve writing a program that will act as a mediator between my computer and snowflake.
+In this project we're going to connect the code on our machines with our snowflake database using Python. This will involve writing a program that will act as a mediator between our terminals and snowflake.
 
 ## How to run the code
 This project relies on environment variables for user authentication. You will need to export the following variables to your shell:
