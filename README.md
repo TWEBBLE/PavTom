@@ -5,12 +5,12 @@ In this project we're going to connect the code on our machines with our snowfla
 ## How to run the code
 This project relies on environment variables for user authentication. You will need to export the following variables to your shell:
 
->SNOWFLAKE_USER
->SNOWFLAKE_ROLE
->SNOWFLAKE_PASSWORD
->SNOWFLAKE_ACCOUNT
->SNOWFLAKE_REGION
->SNOWFLAKE_WAREHOUSE
+    SNOWFLAKE_USER
+    SNOWFLAKE_ROLE
+    SNOWFLAKE_PASSWORD
+    SNOWFLAKE_ACCOUNT
+    SNOWFLAKE_REGION
+    SNOWFLAKE_WAREHOUSE
 
 ### To run the code use:
 
