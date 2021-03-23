@@ -1,4 +1,4 @@
-from Snowflake_Connector import SnowflakeConnector
+from Snowflake_Connector import SnowflakeConnector, snowflake_connection_details
 import os
 from pathlib import Path
 from dotenv import load_dotenv
