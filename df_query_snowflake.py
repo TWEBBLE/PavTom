@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 import os
 import pandas as pd
 
+from Snowflake_Connector import snowflake_connection_details
 from pathlib import Path
 from snowflake.sqlalchemy import URL
 from pathlib import Path
@@ -9,18 +10,6 @@ from dotenv import load_dotenv
 
 env_path = Path(".") / ".env"
 load_dotenv(dotenv_path=env_path)
-
-def snowflake_connection_details():
-    snowflake_connection_details = {
-        "user": os.environ.get("SNOWFLAKE_USER"),
-        "role": os.environ.get("SNOWFLAKE_ROLE", "SYSADMIN"),
-        "password": os.environ.get("SNOWFLAKE_PASSWORD"),
-        "account": str(os.environ.get("SNOWFLAKE_ACCOUNT"))
-        + "."
-        + os.environ.get("SNOWFLAKE_REGION", "eu-west-1"),
-        "warehouse": os.environ.get("SNOWFLAKE_WAREHOUSE", "COMPUTE_WH"),
-    }
-    return snowflake_connection_details
 
 snowflake_connection_details = snowflake_connection_details()
 
@@ -48,6 +37,7 @@ try:
         index=False,
         chunksize=16000,
     )
+    print(result)
 finally:
     connection.close()
     engine.dispose()
