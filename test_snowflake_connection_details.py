@@ -14,5 +14,3 @@ def test_snowflake_connection_details():
         "account": "D.E",
         "warehouse": "F",
     }
-
-    # {"user":"PAVJAGODA", "role":"SYSADMIN","password":"XXXXXXXXXX", "account":"ui70075.eu-west-1", "warehouse":"COMPUTE_WH"}
